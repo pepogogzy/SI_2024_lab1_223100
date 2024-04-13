@@ -1,0 +1,49 @@
+git init - Иницијализира локален гит репозиториум.
+git remote add origin https://github.com/pepogogzy/SI_2024_lab1_223100  - Го поврзува ремоте репозиториумот со локалниот.
+
+git add .\README.md - Го додава (stage) README фајлот во локалниот репозиториум.
+git commit -m "Initial commit" - Прв комит.
+
+git add .\SILab1_1.java - Се додаваат 3те датотеки кои требаше да ги симнеме, и потоа правиме комит
+git add .\SILab1_2.java
+git add .\SILab1Main.java
+git commit -m "Add starter code"
+
+git push origin master - Се синхронизира локалната мастер гранка со ремоте.
+
+git branch bug1 - Правиме 2 нови гранки
+git branch bug2
+
+
+git checkout bug1 - Се префрламе на првата гранка, го менуваме фајлот, го додаваме и правиме комит.
+git add .\SILab1_1.java
+git commit -m "Fix wrong condition in filterOddLengthStrings"
+
+git checkout bug2 - Се префрламе на втората гранка, го менуваме фајлот, го додаваме и правиме комит.
+git add .\SILab1_2.java        
+git commit -m "Fix wrong condition in makeBigStringFrom"     
+
+git checkout bug1 - Се префрламе на првата гранка, додаваме повик на методот во маин фајлот, го додаваме и правиме комит.
+git add .\SILab1Main.java
+git commit -m "Call method filterOddLengthStrings in main class"
+
+git checkout bug2 - Се префрламе на втората гранка, додаваме повик на методот во маин фајлот, го додаваме и правиме комит.
+git add .\SILab1Main.java
+git commit -m "Call method makeBigStringFrom in main class"
+
+git push origin bug1:bug1 - Ги синхронизираме двете нови гранки.
+git push origin bug2:bug2
+
+git checkout master - Се префрламе на мастер, ја спојуваме bug1 и ја синхронизираме со ремоте.
+git merge bug1
+git push origin master
+
+git checkout bug2 - Се префрламе на bug2,
+git rebase master - Правиме rebase, тоа јавува конфликт бидејќи во маин фајлот имаме 2 различни вредности за 16от ред, ова го поправаме така што одиме во тој фајл, гит ни го има означено делот со конфликт со <<<<<<<, ======= и >>>>>>>, ги тргаме тие, ги оставаме 2те повикувања на методи едно по друго (16ти и 17ти ред) и на крај го зачувуваме фајлот.
+git add .\SILab1Main.java - Го додаваме фајлот со разрешен конфликт.
+git commit -m "Fixed merge conflict" - Превиме комит.
+git rebase --continue - Го продолжуваме рибејсот.
+
+git push origin master - Ги синхронизираме сите гранки со ремоте репозиториумот.
+git push origin bug1
+git push origin bug2 --force
